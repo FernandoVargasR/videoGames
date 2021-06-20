@@ -16,9 +16,9 @@ class CreateUsersftpvideogamesTable extends Migration
         Schema::create('usersftpvideogames', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('ftp_id')->unsigned();
+            $table->bigInteger('ftpvideogame_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('ftp_id')->references('id')->on('ftpvideogames');
+            $table->foreign('ftpvideogame_id')->references('id')->on('ftpvideogames');
         });
     }
 
