@@ -13,6 +13,7 @@ class FtpvideogamesSeeder extends Seeder
      */
     public function run()
     {
-        //
+        // Aqui le indicamos cuantos registros automaticos queremos que haga
+        \App\Models\Ftpvideogame::factory(50)->create();
     }
 }

@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call([
             VideogamesSeeder::class,
-            FtpvideogamesSeeder::class,
+            //FtpvideogamesSeeder::class,
             TicketsSeeder::class,
         ]);
     }
