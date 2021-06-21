@@ -22,10 +22,15 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             @include('layouts.navegacion')
         </nav>
+
         <!-- Portada -->
         <header class="masthead">
             @include('layouts.portada')
         </header>
+        <section class="page-section" id="services">
+            @yield('contenido')
+        </section>
+
         <!-- Services-->
         <section class="page-section" id="services">
             @include('layouts.services')
@@ -56,6 +61,8 @@
         </footer>
         <!-- Portfolio Information-->
             @include('layouts.portfolioInformation')
+
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
