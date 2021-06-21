@@ -8,7 +8,7 @@
 
 
     <p>
-        <a href="{{ route('videogame.index') }}" class="btn btn-outline-danger" role="button">Listado de videojuegos</a>
+        <a href="{{ route('videogame.index') }}"  class="btn btn-dark" role="button">Listado de videojuegos</a>
     </p>
     <div class="table-responsive table-responsive-xl">
         <table class="table">

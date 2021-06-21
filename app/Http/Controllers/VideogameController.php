@@ -7,6 +7,19 @@ use Illuminate\Http\Request;
 
 class VideogameController extends Controller
 {
+    public function __construct(){
+        $this->rules=[
+            'nombre' => 'required|string|max:100',
+            'categoria' => 'required|string|max:100',
+            'plataforma' => 'required|string|max:50',
+            'precio' => ['required','regex:/^\d+(\.\d{1,2})?$/'],
+            'portada' => 'required|url',
+            'descripcion' =>'required|string|max:1000|min:5',
+            'user_id' => 'required|integer',
+
+        ];
+
+    }
     /**
      * Display a listing of the resource.
      *
@@ -40,6 +53,8 @@ class VideogameController extends Controller
     public function store(Request $request)
     {
         //base de datos
+        //validacion de formularios del lado del servidor
+        $request ->validate($this->rules);
         //La siguiente linea nos permite guardar todos los datos del formulario en la base de datos
         Videogame::create($request->all());
         //cuando nos guarde en la db, nos redirecciona al index
@@ -79,6 +94,7 @@ class VideogameController extends Controller
     public function update(Request $request, Videogame $videogame)
     {
         //actualiza las modificaciones
+        $request ->validate($this->rules);
         //a la linea de abajo le pasamos todo lo que trae request, que son los nuevos valores de cada campo de la tabla videojuegos (acabados de actualizar por el usuario). Debemos especificarle donde debe ser la actualizacion porque, si no lo hacemos, actualizacia toda la tabla. Except se pone para evitar errores, ya que el token y el method patch son confundidos pro columnas, por lo que debemos excluirlos al hacer la actualizacion
         Videogame::where('id', $videogame->id)->update($request->except('_token', '_method'));
 

@@ -7,7 +7,7 @@
         <h2 class="section-heading text-uppercase">Listado de videojuegos</h2>
     </div>
     <p>
-        <a href="{{ route('videogame.create') }}" class="btn btn-outline-danger" role="button">Agregar Videojuego</a>
+        <a href="{{ route('videogame.create') }}"  class="btn btn-dark" role="button">Agregar Videojuego</a>
 
     </p>
     <div class="table-responsive table-responsive-xl">
