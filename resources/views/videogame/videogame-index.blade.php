@@ -23,7 +23,7 @@
             <th scope="col">Precio</th>
             <th scope="col">Portada</th>
             <th scope="col">Descripción</th>
-            <th scope="col">User id</th>
+            <th scope="col">Usuario</th>
             <th scope="col">Acciones</th>
             </tr>
             </thead>
@@ -40,7 +40,7 @@
                         <td>${{ $videogame->precio}}</td>
                         <td><img src="{{ $videogame->portada}}" class="img-fluid" alt="Responsive image"></td>
                         <td>{{ $videogame->descripcion}}</td>
-                        <td>{{ $videogame->user_id}}</td>
+                        <td>{{ $videogame->user->name}}</td>
                         <td>
                             <a href="{{ route('videogame.show', $videogame->id) }}" class="btn btn-primary" role="button"><i class="far fa-eye"></i></a>
 

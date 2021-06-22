@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Videogame;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class VideogameController extends Controller
 {
@@ -15,8 +17,6 @@ class VideogameController extends Controller
             'precio' => ['required','regex:/^\d+(\.\d{1,2})?$/'],
             'portada' => 'required|url',
             'descripcion' =>'required|string|max:1000|min:5',
-            'user_id' => 'required|integer',
-
         ];
 
     }
@@ -28,7 +28,9 @@ class VideogameController extends Controller
     public function index()
     {
         //tabla con todos los videojuegos
-        $videogames = Videogame::get(); //consulta a la tabla en la base de datos
+        // $videogames = Videogame::get(); //consulta a la tabla en la base de datos
+        //esta linea nos da los videogames del usuario en el que estamos solamente
+        $videogames = Auth::user()->videogames()->get();
         //$videogames = Videogame::where('categoria','Acción')->get();
         //$videogames = Videogame::where('categoria', 'like', 'Acción%')->get();
         return view('videogame.videogame-index', compact('videogames')); //el primer parametro es la vista (ubicada en resources/views). El segundo es la tabla de videogames de la db
@@ -55,6 +57,8 @@ class VideogameController extends Controller
         //base de datos
         //validacion de formularios del lado del servidor
         $request ->validate($this->rules);
+        //merge nos permite agregar campos al request como si los hubiera recibido por parametros tambien
+        $request->merge(['user_id' => Auth::id()]);
         //La siguiente linea nos permite guardar todos los datos del formulario en la base de datos
         Videogame::create($request->all());
         //cuando nos guarde en la db, nos redirecciona al index

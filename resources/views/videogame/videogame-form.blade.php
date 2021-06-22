@@ -10,6 +10,7 @@
         <a href="{{ route('videogame.index') }}"  class="btn btn-dark" role="button">Listado de videojuegos</a>
     </p>
 
+    <!-- Nos devuelve el recuadro con los errores -->
     @if ($errors->any())
 
         <div class="alert alert-danger">
@@ -57,11 +58,6 @@
         <div class="mb-3">
             <label for="descripcion" class="form-label">Descripción:</label>
             <input class="form-control" type="text" name="descripcion" id="descripcion" value="{{ old('descripcion') ?? $videogame->descripcion ?? ''}}">
-        </div>
-        <div class="mb-3">
-            <label for="user_id" class="form-label">User id:</label>
-            <input class="form-control" type="number" name="user_id" id="user_id" aria-describedby="userIDHelp" value="{{ old('user_id') ?? $videogame->user_id ?? ''}}">
-            <div id="userIDHelp" class="form-text">El ID debe ser un número.</div>
         </div>
         <div class="mb-3">
             <button type="submit" class="btn btn-warning">Guardar videojuego</button>

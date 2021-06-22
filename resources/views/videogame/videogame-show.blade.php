@@ -18,12 +18,12 @@
             <th scope="col">Created at</th>
             <th scope="col">Updated at</th>
             <th scope="col">Nombre</th>
-            <th scope="col">Categoria</th>
+            <th scope="col">Categoría</th>
             <th scope="col">Plataforma</th>
             <th scope="col">Precio</th>
             <th scope="col">Portada</th>
-            <th scope="col">Descripcion</th>
-            <th scope="col">User id</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Usuario</th>
             </tr>
             </thead>
             <tbody>
@@ -37,7 +37,7 @@
                     <td>${{ $videogame->precio}}</td>
                     <td><img src="{{ $videogame->portada}}" class="img-fluid" alt="Responsive image"></td>
                     <td>{{ $videogame->descripcion}}</td>
-                    <td>{{ $videogame->user_id}}</td>
+                    <td>{{ $videogame->user->name}}</td>
                 </tr>
             </tbody>
         </table>

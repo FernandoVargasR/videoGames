@@ -10,4 +10,8 @@ class Videogame extends Model
     use HasFactory;
     //en la siguiente linea pongo todos los datos que quiera pasar por parametros en el metodo de store(). Si no lo pongo aqui, por cuestiones de seguridad no me deja pasarlo por parametros
     protected $fillable = ['nombre', 'categoria', 'plataforma', 'precio', 'portada', 'descripcion', 'user_id'];
+
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
 }
