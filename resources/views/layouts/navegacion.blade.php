@@ -11,25 +11,21 @@
             <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
             <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
             <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-            @if (Route::has('login'))
-                @auth
-                    <!-- <li class="nav-item"><a href="{{ url('/dashboard') }}" class="nav-link">Dashboard</a></li> -->
-                    <li class="nav-item">
+            @auth
+            <li class="nav-item">
+                @csrf
+                <form action="{{route('logout')}}" method="POST">
                     @csrf
-                    <form action="{{route('logout')}}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-primary"><a class="nav-link">Log Out</a></button>
-                    </form>
-                    </li>
-                @else
-                    <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Log in</a></li>
+                    <a class="nav-link" href="#" onclick="event.preventDefault(); this.closest('form').submit();">Log Out</a>
+                </form>
+            </li>
+            @endauth
 
-                    @if (Route::has('register'))
-                        <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">Register</a></li>
-                    @endif
-                @endauth
+            @guest
+                <li class="nav-item"><a href="{{ route('login') }}" class="nav-link">Log in</a></li>
+                <li class="nav-item"><a href="{{ route('register') }}" class="nav-link">Register</a></li>
+            @endguest
 
-            @endif
         </ul>
     </div>
 </div>

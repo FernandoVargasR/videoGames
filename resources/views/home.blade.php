@@ -27,6 +27,7 @@
         <header class="masthead">
             @include('layouts.portada')
         </header>
+
         <section class="page-section" id="services">
             @yield('contenido')
         </section>

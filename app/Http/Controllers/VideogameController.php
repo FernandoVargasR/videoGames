@@ -10,6 +10,9 @@ use Illuminate\Validation\Rule;
 class VideogameController extends Controller
 {
     public function __construct(){
+        // el middleware('auth') permite que solo el que este loggeado pueda acceder a esa ruta
+        // $this->middleware('auth')->except('show');
+        $this->middleware('auth');
         $this->rules=[
             'nombre' => 'required|string|max:100',
             'categoria' => 'required|string|max:100',
