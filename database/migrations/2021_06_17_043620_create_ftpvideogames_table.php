@@ -20,7 +20,6 @@ class CreateFtpvideogamesTable extends Migration
             $table->string('categoria', 100);
             $table->string('descripcion',1000);
             $table->string('juego', 1024);
-            $table->boolean('online');
         });
     }
 

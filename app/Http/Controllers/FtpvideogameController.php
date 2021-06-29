@@ -18,7 +18,6 @@ class FtpvideogameController extends Controller
             'categoria' => 'required|string|max:100',
             'descripcion' =>'required|string|max:1000|min:5',
             'juego' => 'required|url',
-            'online' => 'required|boolean',
         ];
 
     }
@@ -29,7 +28,9 @@ class FtpvideogameController extends Controller
      */
     public function index()
     {
-        return view('ftpvideogame.ftpvideogame-index');
+        //esta linea nos da los ftpvideogames del usuario en el que estamos solamente
+        $ftpvideogames = Auth::user()->ftpvideogames()->get();
+        return view('ftpvideogame.ftpvideogame-index', compact('ftpvideogames'));
     }
 
     /**
@@ -39,7 +40,7 @@ class FtpvideogameController extends Controller
      */
     public function create()
     {
-        //
+        return view('ftpvideogame.ftpvideogame-form');
     }
 
     /**
@@ -50,7 +51,15 @@ class FtpvideogameController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //base de datos
+        //validacion de formularios del lado del servidor
+        $request ->validate($this->rules);
+        //merge nos permite agregar campos al request como si los hubiera recibido por parametros tambien
+        //  $request->merge(['user_id' => Auth::id()]);
+        //La siguiente linea nos permite guardar todos los datos del formulario en la base de datos
+        Ftpvideogame::create($request->all());
+        //cuando nos guarde en la db, nos redirecciona al index
+        return redirect()->route('ftpvideogame.index');
     }
 
     /**
@@ -61,7 +70,8 @@ class FtpvideogameController extends Controller
      */
     public function show(Ftpvideogame $ftpvideogame)
     {
-        //
+        //muestra un videojuego en especifico de acuerdo a su id
+        return view('ftpvideogame.ftpvideogame-show', compact('ftpvideogame'));
     }
 
     /**
@@ -72,7 +82,7 @@ class FtpvideogameController extends Controller
      */
     public function edit(Ftpvideogame $ftpvideogame)
     {
-        //
+        return view ('ftpvideogame.ftpvideogame-form', compact('ftpvideogame'));
     }
 
     /**
@@ -84,7 +94,12 @@ class FtpvideogameController extends Controller
      */
     public function update(Request $request, Ftpvideogame $ftpvideogame)
     {
-        //
+        //actualiza las modificaciones
+        $request ->validate($this->rules);
+        //a la linea de abajo le pasamos todo lo que trae request, que son los nuevos valores de cada campo de la tabla videojuegos (acabados de actualizar por el usuario). Debemos especificarle donde debe ser la actualizacion porque, si no lo hacemos, actualizacia toda la tabla. Except se pone para evitar errores, ya que el token y el method patch son confundidos pro columnas, por lo que debemos excluirlos al hacer la actualizacion
+        Ftpvideogame::where('id', $ftpvideogame->id)->update($request->except('_token', '_method'));
+
+        return redirect()->route('ftpvideogame.show', $ftpvideogame);
     }
 
     /**
@@ -95,6 +110,8 @@ class FtpvideogameController extends Controller
      */
     public function destroy(Ftpvideogame $ftpvideogame)
     {
-        //
+        //elimina un videojuego
+        $ftpvideogame->delete();
+        return redirect()->route('ftpvideogame.index');
     }
 }

@@ -1,7 +1,7 @@
 <div class="container">
     <div class="text-center">
-        <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        <h2 class="section-heading text-uppercase">Nuestro equipo</h2>
+        <h3 class="section-subheading text-muted">Conformados por el mejor equipo de desarrolladores.</h3>
     </div>
     <div class="row">
         <div class="col-lg-4">
@@ -34,8 +34,5 @@
                 <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
     </div>
 </div>

@@ -7,7 +7,7 @@
         <meta name="author" content="" />
         <title>Play Station</title>
         <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href=" {{ asset('plantilla/assets/favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href=" {{ asset('plantilla/assets/icons8-play-station.svg') }}" />
         <!-- Font Awesome icons (free version)-->
         <script src="https://use.fontawesome.com/releases/v5.15.3/js/all.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
@@ -24,7 +24,7 @@
         </nav>
 
         <!-- Portada -->
-        <header class="masthead">
+        <header class="masthead" style="background-image: url('{{asset('plantilla/assets/img/bg.jpg')}}');>
             @include('layouts.portada')
         </header>
 

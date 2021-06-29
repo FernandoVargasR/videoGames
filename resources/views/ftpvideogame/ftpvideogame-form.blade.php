@@ -34,31 +34,23 @@
         <!-- Si lo llamamos desde edit nos apareceran los datos del videojuego -->
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre:</label>
-            <input class="form-control" type="text" name="nombre" id="nombre" value="{{ old('nombre') ?? $videogame->nombre ?? ''}}">
+            <input class="form-control" type="text" name="nombre" id="nombre" value="{{ old('nombre') ?? $ftpvideogame->nombre ?? ''}}">
 
         </div>
         <div class="mb-3">
             <label for="categoria" class="form-label">Categoría:</label>
-            <input class="form-control" type="text" name="categoria" id="categoria" value="{{ old('categoria') ?? $videogame->categoria ?? ''}}">
-        </div>
-        <div class="mb-3">
-            <label for="plataforma" class="form-label">Plataforma:</label>
-            <input class="form-control" type="text" name="plataforma" id="plataforma" value="{{ old('plataforma') ?? $videogame->plataforma ?? ''}}">
-        </div>
-        <div class="mb-3">
-            <label for="precio" class="form-label">Precio:</label>
-            <input class="form-control" type="number" name="precio" id="precio" aria-describedby="precioHelp" value="{{ old('precio') ?? $videogame->precio ?? ''}}">
-            <div id="precioHelp" class="form-text">La cantidad debe ser numérica.</div>
-        </div>
-        <div class="mb-3">
-            <label for="portada" class="form-label">Portada:</label>
-            <input class="form-control" type="url" name="portada" id="portada" aria-describedby="portadaHelp" value="{{ old('portada') ?? $videogame->portada ?? ''}}">
-            <div id="portadaHelp" class="form-text">Se debe introducir la URL completa de la imagen de portada.</div>
+            <input class="form-control" type="text" name="categoria" id="categoria" value="{{ old('categoria') ?? $ftpvideogame->categoria ?? ''}}">
         </div>
         <div class="mb-3">
             <label for="descripcion" class="form-label">Descripción:</label>
-            <input class="form-control" type="text" name="descripcion" id="descripcion" value="{{ old('descripcion') ?? $videogame->descripcion ?? ''}}">
+            <input class="form-control" type="text" name="descripcion" id="descripcion" value="{{ old('descripcion') ?? $ftpvideogame->descripcion ?? ''}}">
         </div>
+        <div class="mb-3">
+            <label for="juego" class="form-label">Link del juego:</label>
+            <input class="form-control"  type="url" name="juego" id="juego" aria-describedby="linkHelp" value="{{ old('juego') ?? $ftpvideogame->plataforma ?? ''}}">
+            <div id="linkHelp" class="form-text">Se debe introducir la URL completa del juego.</div>
+        </div>
+
         <div class="mb-3">
             <button type="submit" class="btn btn-warning">Guardar videojuego</button>
         </div>

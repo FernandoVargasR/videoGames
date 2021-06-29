@@ -1,7 +1,7 @@
 <div class="container">
     <div class="text-center">
-        <h2 class="section-heading text-uppercase">Portfolio</h2>
-        <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+        <h2 class="section-heading text-uppercase">Noticias</h2>
+        <h3 class="section-subheading text-muted">Entérate de lo más reciente.</h3>
     </div>
     <div class="row">
         <div class="col-lg-4 col-sm-6 mb-4">
@@ -11,11 +11,11 @@
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src="{{asset('plantilla/assets/img/portfolio/1.jpg')}}" alt="..." />
+                    <img class="img-fluid" src="{{asset('plantilla/assets/img/portfolio/a.webp')}}" alt="..." />
                 </a>
                 <div class="portfolio-caption">
-                    <div class="portfolio-caption-heading">Threads</div>
-                    <div class="portfolio-caption-subheading text-muted">Illustration</div>
+                    <div class="portfolio-caption-heading">Sniper Isabelle comes to Predator: Hunting Grounds in new DLC</div>
+                    <div class="portfolio-caption-subheading text-muted">29 Junio, 2021</div>
                 </div>
             </div>
         </div>
@@ -26,11 +26,11 @@
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src="{{asset('plantilla/assets/img/portfolio/2.jpg')}}" alt="..." />
+                    <img class="img-fluid" src="{{asset('plantilla/assets/img/portfolio/b.jpg')}}" alt="..." />
                 </a>
                 <div class="portfolio-caption">
-                    <div class="portfolio-caption-heading">Explore</div>
-                    <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                    <div class="portfolio-caption-heading">Welcome to the world of Babylon’s Fall</div>
+                    <div class="portfolio-caption-subheading text-muted">13 Junio, 2021</div>
                 </div>
             </div>
         </div>
@@ -41,11 +41,11 @@
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src="{{asset('plantilla/assets/img/portfolio/3.jpg')}}" alt="..." />
+                    <img class="img-fluid" src="{{asset('plantilla/assets/img/portfolio/c.webp')}}" alt="..." />
                 </a>
                 <div class="portfolio-caption">
-                    <div class="portfolio-caption-heading">Finish</div>
-                    <div class="portfolio-caption-subheading text-muted">Identity</div>
+                    <div class="portfolio-caption-heading">Reach your full psionic potential with these Scarlet Nexus gameplay tips, out now</div>
+                    <div class="portfolio-caption-subheading text-muted">25 Junio, 2021</div>
                 </div>
             </div>
         </div>
@@ -56,11 +56,11 @@
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src="{{asset('plantilla/assets/img/portfolio/4.jpg')}}" alt="..." />
+                    <img class="img-fluid" src="{{asset('plantilla/assets/img/portfolio/d.webp')}}" alt="..." />
                 </a>
                 <div class="portfolio-caption">
-                    <div class="portfolio-caption-heading">Lines</div>
-                    <div class="portfolio-caption-subheading text-muted">Branding</div>
+                    <div class="portfolio-caption-heading">Super Monkey Ball Banana Mania: Celebrating 20 years of monkey magic</div>
+                    <div class="portfolio-caption-subheading text-muted">16 Junio, 2021</div>
                 </div>
             </div>
         </div>
@@ -71,11 +71,11 @@
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src="{{asset('plantilla/assets/img/portfolio/5.jpg')}}" alt="..." />
+                    <img class="img-fluid" src="{{asset('plantilla/assets/img/portfolio/e.webp')}}" alt="..." />
                 </a>
                 <div class="portfolio-caption">
-                    <div class="portfolio-caption-heading">Southwest</div>
-                    <div class="portfolio-caption-subheading text-muted">Website Design</div>
+                    <div class="portfolio-caption-heading">Season Four of Black Ops Cold War and Warzone lands June 17</div>
+                    <div class="portfolio-caption-subheading text-muted">11 Junio, 2021</div>
                 </div>
             </div>
         </div>
@@ -86,11 +86,11 @@
                     <div class="portfolio-hover">
                         <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
                     </div>
-                    <img class="img-fluid" src="{{asset('plantilla/assets/img/portfolio/6.jpg')}}" alt="..." />
+                    <img class="img-fluid" src="{{asset('plantilla/assets/img/portfolio/f.webp')}}" alt="..." />
                 </a>
                 <div class="portfolio-caption">
-                    <div class="portfolio-caption-heading">Window</div>
-                    <div class="portfolio-caption-subheading text-muted">Photography</div>
+                    <div class="portfolio-caption-heading">Share of the Week: Returnal</div>
+                    <div class="portfolio-caption-subheading text-muted">11 Junio, 2021</div>
                 </div>
             </div>
         </div>
