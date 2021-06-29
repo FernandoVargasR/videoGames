@@ -40,6 +40,14 @@
 						<i class="zmdi zmdi-email"></i>
 					</div>
 					<div class="form-wrapper">
+                        <input class="form-check-input" type="radio" name="tipo" value="Administrador" id="tipo">
+                        <label class="form-check-label" for="tipo">Administrador</label>
+
+                        <input class="form-check-input" type="radio" name="tipo" value="Cliente" id="tipo">
+                        <label class="form-check-label" for="tipo">Cliente</label>
+
+					</div>
+					<div class="form-wrapper">
                         <label for="password"  value="{{ __('Password') }}"></label>
 						<input type="password" placeholder="Contraseña" class="form-control" id="password" name="password" required autocomplete="new-password>
 						<i class="zmdi zmdi-lock"></i>
