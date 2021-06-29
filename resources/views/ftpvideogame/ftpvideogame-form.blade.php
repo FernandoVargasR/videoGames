@@ -11,17 +11,8 @@
     </p>
 
     <!-- Nos devuelve el recuadro con los errores -->
-    @if ($errors->any())
-
-        <div class="alert alert-danger">
-            <p>Verifique los campos del formulario</p>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+    @include('partials.form-errors')
+    
     <!-- Este formulario es llamado desde el metodo edit y desde el create. Cuando lo llamamos desde edit mandamos como parametros a un videojuego (que es el que vamos a editar), pero cuando lo llamamos desde create no le mandamos nada. En dependencia de donde lo estemos llamando es hacia donde  lo vamos a mandar. Entonces, para definir desde donde lo estamos llamando, hacemos el siguiente if -->
     @if(isset($ftpvideogame))
         <form action="{{ route('ftpvideogame.update', $ftpvideogame) }}" method="POST">

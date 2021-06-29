@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>RegistrationForm_v1 by Colorlib</title>
+		<title>Registro</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 		<!-- MATERIAL DESIGN ICONIC FONT -->
@@ -10,49 +10,56 @@
 
 		<!-- STYLE CSS -->
 		<link rel="stylesheet" href="{{asset('registerPlantilla/css/style.css')}}">
+
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="{{ asset('plantilla/css/styles.css') }}" rel="stylesheet" />
 	</head>
 
 	<body>
 
 		<div class="wrapper" style="background-image: url('{{asset('registerPlantilla/images/fondo.jpg')}}');">
+
 			<div class="inner">
 				<div class="image-holder">
 					<img src="{{asset('registerPlantilla/images/image.jpg')}}" alt="">
 				</div>
-				<form action="">
-					<h3>Register</h3>
-					<div class="form-group">
-						<input type="text" placeholder="First Name" class="form-control">
-						<input type="text" placeholder="Last Name" class="form-control">
-					</div>
+
+				<form method="POST" action="{{ route('register') }}">
+                    @csrf
+
+					<h3>Registro</h3>
+                    @include('partials.form-errors')
 					<div class="form-wrapper">
-						<input type="text" placeholder="Username" class="form-control">
+                        <label for="name"  value="{{ __('Name') }}"></label>
+						<input type="text" placeholder="Nombre" class="form-control" id="name" name="name" value="{{old('name')}}" required autofocus autocomplete="name">
 						<i class="zmdi zmdi-account"></i>
 					</div>
 					<div class="form-wrapper">
-						<input type="text" placeholder="Email Address" class="form-control">
+                        <label for="email"  value="{{ __('Email') }}"></label>
+						<input type="email" placeholder="Email Address" class="form-control" id="email" name="email" value="{{old('email')}}" required>
 						<i class="zmdi zmdi-email"></i>
 					</div>
 					<div class="form-wrapper">
-						<select name="" id="" class="form-control">
-							<option value="" disabled selected>Gender</option>
-							<option value="male">Male</option>
-							<option value="femal">Female</option>
-							<option value="other">Other</option>
-						</select>
-						<i class="zmdi zmdi-caret-down" style="font-size: 17px"></i>
-					</div>
-					<div class="form-wrapper">
-						<input type="password" placeholder="Password" class="form-control">
+                        <label for="password"  value="{{ __('Password') }}"></label>
+						<input type="password" placeholder="Contraseña" class="form-control" id="password" name="password" required autocomplete="new-password>
 						<i class="zmdi zmdi-lock"></i>
 					</div>
 					<div class="form-wrapper">
-						<input type="password" placeholder="Confirm Password" class="form-control">
+                        <label for="password_confirmation"  value="{{ __('Confirm Password') }}"></label>
+						<input type="password" placeholder="Confirmar contraseña" class="form-control" id="password_confirmation" name="password_confirmation" required autocomplete="new-password">
 						<i class="zmdi zmdi-lock"></i>
 					</div>
-					<button>Register
+
+                    <br>
+					<button>{{ __('Register') }}
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>
+
+                    <div>
+                        <br>
+                        <a href="{{ route('login') }}">{{ __('Already registered?') }}</a>
+                    </div>
+
 				</form>
 			</div>
 		</div>
