@@ -59,8 +59,14 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
+    // relacion 1 a muchos
     public function videogames(){
 
         return $this->hasMany(Videogame::class);
+    }
+
+    // relacion muchos a muchos
+    public function ftpvideogames(){
+        return $this->belongsToMany(Ftpvideogame::class);
     }
 }

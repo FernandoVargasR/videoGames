@@ -42,6 +42,7 @@
             </tbody>
         </table>
     </div>
+
     <form action="{{ route('videogame.destroy', $videogame) }}" method="POST">
         @csrf
         @method('DELETE')

@@ -1,5 +1,6 @@
 <?php
 use App\Http\Controllers\VideogameController;
+use App\Http\Controllers\FtpvideogameController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,3 +28,5 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 Route::resource('videogame', VideogameController::class); //->middleware('auth');
+
+Route::resource('ftpvideogame', FtpvideogameController::class);

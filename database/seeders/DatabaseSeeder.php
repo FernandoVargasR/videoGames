@@ -18,7 +18,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             VideogamesSeeder::class,
             //FtpvideogamesSeeder::class,
-            TicketsSeeder::class,
+            //TicketsSeeder::class,
         ]);
     }
 }

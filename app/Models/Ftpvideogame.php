@@ -9,4 +9,9 @@ class Ftpvideogame extends Model
 {
     use HasFactory;
     public $timestamps = false;
+
+    //relacion muchos a muchos
+    public function users(){
+        return $this->belongsToMany(User::class);
+    }
 }
