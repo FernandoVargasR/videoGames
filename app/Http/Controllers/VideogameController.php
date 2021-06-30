@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Videogame;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate; //gate
 use Illuminate\Validation\Rule;
 
 class VideogameController extends Controller
@@ -34,10 +35,13 @@ class VideogameController extends Controller
         // $videogames = Videogame::get(); //consulta a la tabla en la base de datos
         //esta linea nos da los videogames del usuario en el que estamos solamente (auth)
         // $videogames = Auth::user()->videogames()->get();
-        $videogames = Auth::user()->videogames()->with('user:id,name')->get();
-        //$videogames = Videogame::where('categoria','Acción')->get();
-        //$videogames = Videogame::where('categoria', 'like', 'Acción%')->get();
-        return view('videogame.videogame-index', compact('videogames')); //el primer parametro es la vista (ubicada en resources/views). El segundo es la tabla de videogames de la db
+        if(Auth::user())
+            if(Auth::user()->tipo=='Administrador')
+                $videogames = Auth::user()->videogames()->with('user:id,name')->get();
+            else
+                $videogames=Videogame::with('user:id,name')->get();
+
+        return view('videogame.videogame-index', compact('videogames'));//el primer parametro es la vista (ubicada en resources/views). El segundo es la tabla de videogames de la db
     }
 
     /**
@@ -47,6 +51,8 @@ class VideogameController extends Controller
      */
     public function create()
     {
+        //gates
+        Gate::authorize('admin-videogames');
         return view('videogame.videogame-form');
     }
 
@@ -59,6 +65,7 @@ class VideogameController extends Controller
     public function store(Request $request)
     {
         //base de datos
+        Gate::authorize('admin-videogames'); //gates
         //validacion de formularios del lado del servidor
         $request ->validate($this->rules);
         //merge nos permite agregar campos al request como si los hubiera recibido por parametros tambien
@@ -89,6 +96,7 @@ class VideogameController extends Controller
      */
     public function edit(Videogame $videogame)
     {
+        Gate::authorize('admin-videogames');
         return view ('videogame.videogame-form', compact('videogame'));
     }
 
@@ -101,6 +109,8 @@ class VideogameController extends Controller
      */
     public function update(Request $request, Videogame $videogame)
     {
+        //gates
+        Gate::authorize('admin-videogames');
         //actualiza las modificaciones
         $request ->validate($this->rules);
         //a la linea de abajo le pasamos todo lo que trae request, que son los nuevos valores de cada campo de la tabla videojuegos (acabados de actualizar por el usuario). Debemos especificarle donde debe ser la actualizacion porque, si no lo hacemos, actualizacia toda la tabla. Except se pone para evitar errores, ya que el token y el method patch son confundidos pro columnas, por lo que debemos excluirlos al hacer la actualizacion
@@ -118,6 +128,7 @@ class VideogameController extends Controller
      */
     public function destroy(Videogame $videogame)
     {
+        Gate::authorize('admin-videogames');
         //elimina un videojuego
         $videogame->delete();
         return redirect()->route('videogame.index');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ftpvideogame;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate; //gate
 use Illuminate\Validation\Rule;
 
 class FtpvideogameController extends Controller
@@ -28,8 +29,15 @@ class FtpvideogameController extends Controller
      */
     public function index()
     {
-        //esta linea nos da los ftpvideogames del usuario en el que estamos solamente (eager loading)
-        $ftpvideogames = Auth::user()->ftpvideogames()->with('user:id,name')->get();
+
+        if(Auth::user())
+            if(Auth::user()->tipo=='Administrador')
+                //esta linea nos da los ftpvideogames del usuario en el que estamos solamente (eager loading)
+                $ftpvideogames = Auth::user()->ftpvideogames()->with('user:id,name')->get();
+            else
+                $ftpvideogames=Ftpvideogame::with('user:id,name')->get();
+
+
         return view('ftpvideogame.ftpvideogame-index', compact('ftpvideogames'));
     }
 
@@ -40,6 +48,8 @@ class FtpvideogameController extends Controller
      */
     public function create()
     {
+        //gates
+        Gate::authorize('admin-ftpvideogames');
         return view('ftpvideogame.ftpvideogame-form');
     }
 
@@ -52,6 +62,8 @@ class FtpvideogameController extends Controller
     public function store(Request $request)
     {
         //base de datos
+        //gates
+        Gate::authorize('admin-ftpvideogames');
         //validacion de formularios del lado del servidor
         $request ->validate($this->rules);
         //merge nos permite agregar campos al request como si los hubiera recibido por parametros tambien
@@ -82,6 +94,8 @@ class FtpvideogameController extends Controller
      */
     public function edit(Ftpvideogame $ftpvideogame)
     {
+        //gates
+        Gate::authorize('admin-ftpvideogames');
         return view ('ftpvideogame.ftpvideogame-form', compact('ftpvideogame'));
     }
 
@@ -94,6 +108,8 @@ class FtpvideogameController extends Controller
      */
     public function update(Request $request, Ftpvideogame $ftpvideogame)
     {
+        //gates
+        Gate::authorize('admin-ftpvideogames');
         //actualiza las modificaciones
         $request ->validate($this->rules);
         //a la linea de abajo le pasamos todo lo que trae request, que son los nuevos valores de cada campo de la tabla videojuegos (acabados de actualizar por el usuario). Debemos especificarle donde debe ser la actualizacion porque, si no lo hacemos, actualizacia toda la tabla. Except se pone para evitar errores, ya que el token y el method patch son confundidos pro columnas, por lo que debemos excluirlos al hacer la actualizacion
@@ -110,6 +126,8 @@ class FtpvideogameController extends Controller
      */
     public function destroy(Ftpvideogame $ftpvideogame)
     {
+        //gates
+        Gate::authorize('admin-ftpvideogames');
         //elimina un videojuego
         $ftpvideogame->delete();
         return redirect()->route('ftpvideogame.index');
