@@ -1,4 +1,5 @@
 <?php
+use App\Http\Controllers\FileController;
 use App\Http\Controllers\VideogameController;
 use App\Http\Controllers\FtpvideogameController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -56,4 +57,8 @@ Route::resource('videogame', VideogameController::class)->middleware('verified')
 
 Route::resource('ftpvideogame', FtpvideogameController::class)->middleware('verified');
 
+//me envia al metodo download dentro de file el nombre del archivo que se quiere descargar
+Route::get('file/download/{file}', [FileController::class, 'download'])->name('file.download');
 
+//es la ruta para todo lo que tiene que ver con el crud de archivos, pero le quitamos algunos metodos que no utilizaremos
+Route::resource('file', FileController::class)->except(['edit', 'update', 'show']);

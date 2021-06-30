@@ -12,7 +12,7 @@
 
     <!-- Nos devuelve el recuadro con los errores -->
     @include('partials.form-errors')
-    
+
     <!-- Este formulario es llamado desde el metodo edit y desde el create. Cuando lo llamamos desde edit mandamos como parametros a un videojuego (que es el que vamos a editar), pero cuando lo llamamos desde create no le mandamos nada. En dependencia de donde lo estemos llamando es hacia donde  lo vamos a mandar. Entonces, para definir desde donde lo estamos llamando, hacemos el siguiente if -->
     @if(isset($ftpvideogame))
         <form action="{{ route('ftpvideogame.update', $ftpvideogame) }}" method="POST">
@@ -38,7 +38,7 @@
         </div>
         <div class="mb-3">
             <label for="juego" class="form-label">Link del juego:</label>
-            <input class="form-control"  type="url" name="juego" id="juego" aria-describedby="linkHelp" value="{{ old('juego') ?? $ftpvideogame->plataforma ?? ''}}">
+            <input class="form-control"  type="url" name="juego" id="juego" aria-describedby="linkHelp" value="{{ old('juego') ?? $ftpvideogame->juego ?? ''}}">
             <div id="linkHelp" class="form-text">Se debe introducir la URL completa del juego.</div>
         </div>
 

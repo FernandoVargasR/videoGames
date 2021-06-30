@@ -21,7 +21,6 @@
             <th scope="col">Categoría</th>
             <th scope="col">Descripción</th>
             <th scope="col">Juego</th>
-            <th scope="col">Usuarios</th>
             </tr>
             </thead>
             <tbody>
@@ -33,7 +32,7 @@
                     </td>
                     <td>{{ $ftpvideogame->categoria}}</td>
                     <td>{{ $ftpvideogame->descripcion}}</td>
-                    <td>${{ $ftpvideogame->juego}}</td>
+                    <td>{{ $ftpvideogame->juego}}</td>
                     <td></td>
                 </tr>
             </tbody>

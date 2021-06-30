@@ -39,7 +39,7 @@
                         </td>
                         <td>{{ $ftpvideogame->categoria}}</td>
                         <td>{{ $ftpvideogame->descripcion}}</td>
-                        <td>${{ $ftpvideogame->juego}}</td>
+                        <td><a href="{{ $ftpvideogame->juego }}">Juega</a></td>
                         <td></td>
                         <td>
                             <a href="{{ route('ftpvideogame.show', $ftpvideogame->id) }}" class="btn btn-primary" role="button"><i class="far fa-eye"></i></a>

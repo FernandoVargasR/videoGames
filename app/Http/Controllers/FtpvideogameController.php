@@ -30,13 +30,13 @@ class FtpvideogameController extends Controller
     public function index()
     {
 
-        if(Auth::user())
-            if(Auth::user()->tipo=='Administrador')
-                //esta linea nos da los ftpvideogames del usuario en el que estamos solamente (eager loading)
-                $ftpvideogames = Auth::user()->ftpvideogames()->with('user:id,name')->get();
-            else
-                $ftpvideogames=Ftpvideogame::with('user:id,name')->get();
-
+        // if(Auth::user())
+        //     if(Auth::user()->tipo=='Administrador')
+        //         //esta linea nos da los ftpvideogames del usuario en el que estamos solamente (eager loading)
+        //         $ftpvideogames = Auth::user()->ftpvideogames()->with('user:id,name')->get();
+        //     else
+        //         $ftpvideogames=Ftpvideogame::with('user:id,name')->get();
+        $ftpvideogames=Ftpvideogame::get();
 
         return view('ftpvideogame.ftpvideogame-index', compact('ftpvideogames'));
     }
