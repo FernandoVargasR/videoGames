@@ -28,8 +28,8 @@ class FtpvideogameController extends Controller
      */
     public function index()
     {
-        //esta linea nos da los ftpvideogames del usuario en el que estamos solamente
-        $ftpvideogames = Auth::user()->ftpvideogames()->get();
+        //esta linea nos da los ftpvideogames del usuario en el que estamos solamente (eager loading)
+        $ftpvideogames = Auth::user()->ftpvideogames()->with('user:id,name')->get();
         return view('ftpvideogame.ftpvideogame-index', compact('ftpvideogames'));
     }
 

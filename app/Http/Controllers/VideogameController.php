@@ -32,8 +32,9 @@ class VideogameController extends Controller
     {
         //tabla con todos los videojuegos
         // $videogames = Videogame::get(); //consulta a la tabla en la base de datos
-        //esta linea nos da los videogames del usuario en el que estamos solamente
-        $videogames = Auth::user()->videogames()->get();
+        //esta linea nos da los videogames del usuario en el que estamos solamente (auth)
+        // $videogames = Auth::user()->videogames()->get();
+        $videogames = Auth::user()->videogames()->with('user:id,name')->get();
         //$videogames = Videogame::where('categoria','Acción')->get();
         //$videogames = Videogame::where('categoria', 'like', 'Acción%')->get();
         return view('videogame.videogame-index', compact('videogames')); //el primer parametro es la vista (ubicada en resources/views). El segundo es la tabla de videogames de la db
