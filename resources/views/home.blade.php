@@ -24,38 +24,42 @@
         </nav>
 
         <!-- Portada -->
-        <header class="masthead" style="background-image: url('{{asset('plantilla/assets/img/bg.jpg')}}');>
+        <header class="masthead" style="background-image: url('{{asset('plantilla/assets/img/bg.jpg')}}')">
             @include('layouts.portada')
         </header>
 
         <section class="page-section" id="services">
             @yield('contenido')
         </section>
-
-        <!-- Services-->
-        <section class="page-section" id="services">
-            @include('layouts.services')
-        </section>
-        <!-- Portfolio Grid-->
+        @guest
+            <!-- Servicios-->
+            <section class="page-section" id="services">
+                @include('layouts.services')
+            </section>
+        @endguest
+        <!-- Noticias-->
         <section class="page-section bg-light" id="portfolio">
             @include('layouts.portfolio')
         </section>
-        <!-- About-->
-        <section class="page-section" id="about">
-            @include('layouts.about')
-        </section>
-        <!-- Team-->
-        <section class="page-section bg-light" id="team">
-           @include('layouts.team')
-        </section>
-        <!-- Clients-->
-        <div class="py-5">
-            @include('layouts.clients')
-        </div>
-        <!-- Contact-->
-        <section class="page-section" id="contact">
-            @include('layouts.contact')
-        </section>
+
+        @guest
+            <!-- Conocenos-->
+            <section class="page-section" id="about">
+                @include('layouts.about')
+            </section>
+            <!-- Nuestro equipo -->
+            <section class="page-section bg-light" id="team">
+            @include('layouts.team')
+            </section>
+            <!-- Clients-->
+            <div class="py-5">
+                @include('layouts.clients')
+            </div>
+            <!-- Contact-->
+            <section class="page-section" id="contact">
+                @include('layouts.contact')
+            </section>
+        @endguest
         <!-- Footer-->
         <footer class="footer py-4">
             @include('layouts.footer')

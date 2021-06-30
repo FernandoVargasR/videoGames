@@ -6,10 +6,15 @@
     <div class="text-center">
         <h2 class="section-heading text-uppercase">Listado de videojuegos</h2>
     </div>
-    <p>
-        <a href="{{ route('videogame.create') }}"  class="btn btn-dark" role="button">Agregar Videojuego</a>
 
-    </p>
+    <!-- verificamos que la persona este registrada y que lo este haciendo desde una cuenta de adminsitrador -->
+    @auth
+        @if(auth()->user()->tipo=='Administrador')
+            <p><a href= {{ route('videogame.create') }} class="btn btn-dark" role="button">Agregar Videojuego</a></p>
+        @endif
+    @endauth
+
+
     <div class="table-responsive table-responsive-xl">
         <table class="table">
             <thead class="thead-dark">
@@ -43,8 +48,13 @@
                         <td>{{ $videogame->user->name}}</td>
                         <td>
                             <a href="{{ route('videogame.show', $videogame->id) }}" class="btn btn-primary" role="button"><i class="far fa-eye"></i></a>
+                            <!-- verificamos que la persona este registrada y que lo este haciendo desde una cuenta de adminsitrador -->
+                            @auth
+                                @if(auth()->user()->tipo=='Administrador')
+                                    <a href="{{ route('videogame.edit', $videogame) }} " role="button" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                                @endif
+                            @endauth
 
-                            <a href="{{ route('videogame.edit', $videogame) }} " role="button" class="btn btn-success"><i class="fas fa-edit"></i></a>
                         </td>
 
                     </tr>

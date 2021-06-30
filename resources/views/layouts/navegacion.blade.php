@@ -7,7 +7,12 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
 
+
+
             @auth
+            <li class="nav-item"><a class="nav-link" href="{{ route('videogame.index') }}">Videojuegos</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{ route('ftpvideogame.index') }}">Free to Play Videojuegos</a></li>
+            <li class="nav-item"><a class="nav-link" href="#portfolio">Noticias</a></li>
             <li class="nav-item">
                 @csrf
                 <form action="{{route('logout')}}" method="POST">
