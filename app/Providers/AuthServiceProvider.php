@@ -3,9 +3,12 @@
 namespace App\Providers;
 
 use App\Models\User; //gates
-use App\Models\Programa; //gates
+use App\Models\Videogame; //gates
+use App\Models\Ftpvideogame;
 use App\Models\Team;
 use App\Policies\TeamPolicy;
+use App\Policies\VideogamePolicy;
+use App\Policies\FtpvideogamePolicy;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Auth\Access\Response;
 use Illuminate\Support\Facades\Gate; //gates
@@ -20,6 +23,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
         Team::class => TeamPolicy::class,
+        Videogame::class =>VideogamePolicy::class,
+        Ftpvideogame::class=>FtpvideogamePolicy::class,
     ];
 
     /**

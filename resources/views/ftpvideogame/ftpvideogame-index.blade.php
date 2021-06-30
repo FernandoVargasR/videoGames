@@ -6,10 +6,14 @@
     <div class="text-center">
         <h2 class="section-heading text-uppercase">Listado de free to play videojuegos</h2>
     </div>
-    <p>
-        <a href="{{ route('ftpvideogame.create') }}"  class="btn btn-dark" role="button">Agregar ftp videojuego</a>
 
-    </p>
+    @auth
+        @if(auth()->user()->tipo=='Administrador')
+            <p>
+            <a href="{{ route('ftpvideogame.create') }}"  class="btn btn-dark" role="button">Agregar ftp videojuego</a>
+            </p>
+        @endif
+    @endauth
     <div class="table-responsive table-responsive-xl">
         <table class="table">
             <thead class="thead-dark">
@@ -39,8 +43,12 @@
                         <td></td>
                         <td>
                             <a href="{{ route('ftpvideogame.show', $ftpvideogame->id) }}" class="btn btn-primary" role="button"><i class="far fa-eye"></i></a>
+                            @auth
+                                @if(auth()->user()->tipo=='Administrador')
+                                    <a href="{{ route('ftpvideogame.edit', $ftpvideogame) }} " role="button" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                                @endif
+                            @endauth
 
-                            <a href="{{ route('ftpvideogame.edit', $ftpvideogame) }} " role="button" class="btn btn-success"><i class="fas fa-edit"></i></a>
                         </td>
 
                     </tr>

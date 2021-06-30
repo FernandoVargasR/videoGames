@@ -14,6 +14,8 @@ class VideogameController extends Controller
         // el middleware('auth') permite que solo el que este loggeado pueda acceder a esa ruta
         // $this->middleware('auth')->except('show');
         $this->middleware('auth');
+        //mapea todos los metodos del controlador con todos los metodos del policy, por lo que ya no hay que escribirlos en el controlador
+        $this->authorizeResource(Videogame::class, 'videogame');
         $this->rules=[
             'nombre' => 'required|string|max:100',
             'categoria' => 'required|string|max:100',
@@ -50,9 +52,9 @@ class VideogameController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
+    {   //$this->authorize('create');
         //gates
-        Gate::authorize('admin-videogames');
+        //Gate::authorize('admin-videogames');
         return view('videogame.videogame-form');
     }
 
@@ -65,7 +67,8 @@ class VideogameController extends Controller
     public function store(Request $request)
     {
         //base de datos
-        Gate::authorize('admin-videogames'); //gates
+        //Gate::authorize('admin-videogames'); //gates
+        //$this->authorize('create'); //policy
         //validacion de formularios del lado del servidor
         $request ->validate($this->rules);
         //merge nos permite agregar campos al request como si los hubiera recibido por parametros tambien
@@ -96,7 +99,9 @@ class VideogameController extends Controller
      */
     public function edit(Videogame $videogame)
     {
-        Gate::authorize('admin-videogames');
+        //$this->authorize('update', $videogame); //policy
+
+        //Gate::authorize('admin-videogames');
         return view ('videogame.videogame-form', compact('videogame'));
     }
 
@@ -109,8 +114,8 @@ class VideogameController extends Controller
      */
     public function update(Request $request, Videogame $videogame)
     {
-        //gates
-        Gate::authorize('admin-videogames');
+        // Gate::authorize('admin-videogames'); //gates
+        //$this->authorize('update', $videogame); //policy
         //actualiza las modificaciones
         $request ->validate($this->rules);
         //a la linea de abajo le pasamos todo lo que trae request, que son los nuevos valores de cada campo de la tabla videojuegos (acabados de actualizar por el usuario). Debemos especificarle donde debe ser la actualizacion porque, si no lo hacemos, actualizacia toda la tabla. Except se pone para evitar errores, ya que el token y el method patch son confundidos pro columnas, por lo que debemos excluirlos al hacer la actualizacion
@@ -128,7 +133,8 @@ class VideogameController extends Controller
      */
     public function destroy(Videogame $videogame)
     {
-        Gate::authorize('admin-videogames');
+        //Gate::authorize('admin-videogames'); //gate
+        //$this->authorize('delete', $videogame); //policy
         //elimina un videojuego
         $videogame->delete();
         return redirect()->route('videogame.index');

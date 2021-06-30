@@ -40,11 +40,16 @@
         </table>
     </div>
 
-    <form action="{{ route('ftpvideogame.destroy', $ftpvideogame) }}" method="POST">
-        @csrf
-        @method('DELETE')
-        <!-- <input type="submit" value="Eliminar videojuego"> -->
-        <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i> Eliminar ftp videojuego</button>
-    </form>
+    @auth
+        @if(auth()->user()->tipo=='Administrador')
+        <form action="{{ route('ftpvideogame.destroy', $ftpvideogame) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <!-- <input type="submit" value="Eliminar videojuego"> -->
+            <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i> Eliminar ftp videojuego</button>
+        </form>
+        @endif
+    @endauth
+
 </div>
 @endsection
