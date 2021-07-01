@@ -29,8 +29,11 @@ php artisan key:generate
 
 - Crear base de datos de forma manual llamada (videogames) en Heidi
 
- - Ejecutar migraciones
+- Ejecutar migraciones
 php artisan migrate 
+
+- Crear un usuario desde la pagina videogames.test/register
+(Hay dos tipos de usuario, el Administrador tendrá la posibilidad de eliminar, modificar, agregar en los CRUDs, mientras que el cliente solo podrá ver)
 
 - Ejecutar Seeder
 php artisan db:seed
